@@ -4,10 +4,29 @@ import cv2
 #from keras.preprocessing.image import image
 import matplotlib.pyplot as plt
 import numpy as np
-import tensorflow as tf
+
+
+
+###############################################################
+###############################################################
+#Escoger con qué se quiere correr
+#Con tensorflow
+
+#import tensorflow as tf
+#animal_model = tf.lite.Interpreter(model_path = '../animal_detector.tflite')
+
+
+#Con tensorflow lite
+import tflite_runtime.interpreter as tflite
+animal_model = tflite.Interpreter(model_path = '../animal_detector.tflite')
+
+
+###############################################################
+###############################################################
+
 
 #Se importa el modelo
-animal_model = tf.lite.Interpreter(model_path = '../animal_detector.tflite')
+
 animal_model.allocate_tensors()
 
 #Obtener inputs y outputs del modelo
