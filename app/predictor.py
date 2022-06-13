@@ -134,8 +134,8 @@ def camera_main():
               
                 
             cv2.imshow('Camara',frame)
-            #if cv2.waitKey(2) & 0xFF == ord('q'):
-            #    break
+            if cv2.waitKey(2) & 0xFF == ord('q'):
+                break
                 
         except (ValueError) as err:
             #print(err)
