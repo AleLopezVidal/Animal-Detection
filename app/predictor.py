@@ -4,12 +4,12 @@ import cv2
 #from keras.preprocessing.image import image
 #import matplotlib.pyplot as plt
 import numpy as np
-
-import RPi.GPIO as GPIO
+import time
+#import RPi.GPIO as GPIO
 
 #Setup del output de la Raspberry
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(22,GPIO.OUT)
+#GPIO.setmode(GPIO.BCM)
+#GPIO.setup(22,GPIO.OUT)
 
 
 ###############################################################
@@ -109,13 +109,13 @@ def detected_frogs():
 
 #Función para predicciones con cámara
 def camera_main():
+    cap = cv2.VideoCapture(1)
+    if not cap.isOpened():
+        cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        raise IOError('No se puede abrir la cámara')
     while True:
         try:
-            cap = cv2.VideoCapture(1)
-            if not cap.isOpened():
-                cap = cv2.VideoCapture(0)
-            if not cap.isOpened():
-                raise IOError('No se puede abrir la cámara')
             ret,frame = cap.read()
             #gray  = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
             #animals = faceCascade.detectMultiScale(gray,1.1,4)
