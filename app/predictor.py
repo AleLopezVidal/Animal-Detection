@@ -5,6 +5,11 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
+import RPi.GPIO as GPIO
+
+#Setup del output de la Raspberry
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(22,GPIO.OUT)
 
 
 ###############################################################
@@ -15,10 +20,14 @@ import numpy as np
 #import tensorflow as tf
 #animal_model = tf.lite.Interpreter(model_path = '../animal_detector.tflite')
 
+model1 = '../animal_detector.tflite'
+model2 = '../animal_detector2.tflite'
+model3 = '../animal_detector3.tflite'
+
 
 #Con tensorflow lite
 import tflite_runtime.interpreter as tflite
-animal_model = tflite.Interpreter(model_path = '../animal_detector.tflite')
+animal_model = tflite.Interpreter(model_path = model1)
 
 
 ###############################################################
@@ -92,6 +101,11 @@ def predict(tensor):
 #print('La predicción es que el animal es: ' + prediccion)
 
 
+#Función que enciende el LED
+def detected_frogs():
+    GPIO.output(22,True)
+    time.sleep(5)
+    GPIO.output(22,False)
 
 #Función para predicciones con cámara
 def camera_main():
@@ -113,7 +127,8 @@ def camera_main():
             #Predicción
             img = image_format2(frame)    
             prediccion = predict(img)  
-            
+            if(prediccion =='frogs'):
+                detected_frogs()
             font = cv2.FONT_HERSHEY_COMPLEX
             cv2.putText(frame,prediccion,(100,100), font, 3, (0,0,255), 2, cv2.LINE_4)
               
