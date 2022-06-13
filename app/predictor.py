@@ -2,7 +2,7 @@ import cv2
 #from keras.models import load_model
 #from keras.preprocessing.image import img_to_array
 #from keras.preprocessing.image import image
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 
 import RPi.GPIO as GPIO
@@ -133,7 +133,7 @@ def camera_main():
             cv2.putText(frame,prediccion,(100,100), font, 3, (0,0,255), 2, cv2.LINE_4)
               
                 
-            plt.imshow(frame)
+            cv2.imshow('Camara',frame)
             #if cv2.waitKey(2) & 0xFF == ord('q'):
             #    break
                 
