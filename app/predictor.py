@@ -20,9 +20,9 @@ import time
 #import tensorflow as tf
 #animal_model = tf.lite.Interpreter(model_path = '../animal_detector.tflite')
 
-model1 = '../animal_detector.tflite'
-model2 = '../animal_detector2.tflite'
-model3 = '../animal_detector3.tflite'
+model1 = 'animal_detector.tflite'
+#model2 = '../animal_detector2.tflite'
+#model3 = '../animal_detector3.tflite'
 
 
 #Con tensorflow lite
