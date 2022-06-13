@@ -5,11 +5,12 @@ import cv2
 #import matplotlib.pyplot as plt
 import numpy as np
 import time
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 #Setup del output de la Raspberry
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setup(22,GPIO.OUT)
+#
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(22,GPIO.OUT)
 
 
 ###############################################################
